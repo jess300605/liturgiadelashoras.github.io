@@ -1,154 +1,338 @@
+/* Professional Beige Calendar Styles */
+
+/* CSS Custom Properties for consistent theming */
+:root {
+  --primary-beige: #f5f1eb;
+  --secondary-beige: #e8ddd4;
+  --accent-beige: #d4c4b0;
+  --dark-beige: #b8a082;
+  --text-primary: #3d3427;
+  --text-secondary: #6b5d4f;
+  --text-accent: #8b4513;
+  --sunday-color: #c44536;
+  --special-color: #7d6e57;
+  --hover-color: #9d8b73;
+  --shadow-light: rgba(61, 52, 39, 0.1);
+  --shadow-medium: rgba(61, 52, 39, 0.15);
+  --shadow-dark: rgba(61, 52, 39, 0.25);
+}
+
+/* Body and base styles */
 body {
-  font-family: Verdana, Arial;
-  font-size: 1.1em;
-  background-color: #ffffcc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background: linear-gradient(135deg, var(--primary-beige) 0%, var(--secondary-beige) 100%);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
 }
 
-a:link {
+/* Professional link styles */
+a {
   text-decoration: none;
-  color: blue;
+  color: var(--text-accent);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  padding: 2px 4px;
 }
 
+a:link,
 a:visited {
-  text-decoration: none;
-  color: blue;
+  color: var(--text-accent);
 }
 
 a:hover {
-  text-decoration: none;
   color: white;
+  background-color: var(--hover-color);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px var(--shadow-medium);
 }
 
 a:active {
-  text-decoration: none;
+  transform: translateY(0);
 }
 
-a.sunday:link {
-  text-decoration: none;
-  color: red;
-}
-
+/* Sunday links */
+a.sunday:link,
 a.sunday:visited {
-  text-decoration: none;
-  color: red;
+  color: var(--sunday-color);
+  font-weight: 600;
 }
 
 a.sunday:hover {
-  text-decoration: none;
   color: white;
+  background-color: var(--sunday-color);
 }
 
-a.sunday:active {
-  text-decoration: none;
-}
-
-a.special:link {
-  text-decoration: none;
+/* Special links */
+a.special:link,
+a.special:visited,
+a.special:hover,
+a.special:active {
   color: white;
-}
-
-a.special:visited {
-  text-decoration: none;
-  color: white;
+  background-color: var(--special-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: 0 2px 4px var(--shadow-medium);
 }
 
 a.special:hover {
-  text-decoration: none;
-  color: white;
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-dark);
 }
 
-a.special:active {
-  text-decoration: none;
+/* Professional table styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px var(--shadow-medium);
+  background: white;
+  margin: 20px auto;
 }
 
-table, th, td {
-  border: 1px solid black;
-  font-size: 1.2em;
+th,
+td {
+  border: none;
+  font-size: 1rem;
   text-align: center;
-  background-color: #ccccc2;
-  background-image: url('https://liturgiadelashoras.github.io/images/fnd.jpg');
-  background-repeat: repeat-x;
-  visibility: visible;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  background: linear-gradient(145deg, var(--secondary-beige), var(--accent-beige));
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, Arial, sans-serif;
   font-style: normal;
+  padding: 12px 8px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
+th {
+  background: linear-gradient(145deg, var(--dark-beige), var(--accent-beige));
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+td:hover {
+  background: var(--hover-color);
+  color: white;
+  transform: scale(1.05);
+  z-index: 10;
+  box-shadow: 0 4px 16px var(--shadow-dark);
+}
+
+/* Calendar container */
 .calendar {
-  max-width: 344px;
-  margin: 0px auto;
+  max-width: 420px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 48px var(--shadow-medium);
+  overflow: hidden;
+  padding: 24px;
 }
 
+/* Calendar day styles */
 .calendar_day {
-  width: 9%;
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
-  background-color: #ccccc2;
-  background-image: url('https://liturgiadelashoras.github.io/images/fnd.jpg');
-  background-repeat: repeat-x;
-  line-height: 50%;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 3px;
+  width: calc(14.28% - 8px);
+  min-height: 48px;
+  box-shadow: 0 3px 12px var(--shadow-light);
+  background: linear-gradient(145deg, var(--secondary-beige), var(--primary-beige));
+  padding: 12px 8px;
+  margin: 4px;
   text-align: center;
   display: inline-block;
-  border-radius: 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  border: 2px solid transparent;
+  font-size: 1rem;
 }
 
 .calendar_day:hover {
-  background-color: #808080;
-  background-image: none;
+  background: linear-gradient(145deg, var(--hover-color), var(--dark-beige));
   color: white;
-  cursor: pointer;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px var(--shadow-dark);
+  border-color: var(--accent-beige);
 }
 
+.calendar_day:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Calendar day header */
 .calendar_day_header {
-  width: 9%;
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.1);
-  background-color: #ccccc2;
-  background-image: url('https://liturgiadelashoras.github.io/images/fnd.jpg');
-  background-repeat: repeat-x;
-  line-height: 50%;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 3px;
+  width: calc(14.28% - 8px);
+  min-height: 40px;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  background: linear-gradient(145deg, var(--dark-beige), var(--accent-beige));
+  padding: 10px 8px;
+  margin: 4px;
   text-align: center;
   display: inline-block;
   border-radius: 8px;
+  font-weight: 600;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.85rem;
 }
 
+/* Empty calendar day */
 .calendar_day_empty {
-  width: 9%;
-  line-height: 50%;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 3px;
+  width: calc(14.28% - 8px);
+  min-height: 48px;
+  padding: 12px 8px;
+  margin: 4px;
   text-align: center;
   display: inline-block;
-  border-radius: 8px;
+  border-radius: 12px;
+  opacity: 0.3;
 }
 
+/* Special calendar day */
 .calendar_day_special {
-  background-color: #808080;
-  background-image: none;
-  box-shadow: 0px 2px 1px 0px black;
+  background: linear-gradient(145deg, var(--special-color), var(--hover-color)) !important;
+  color: white !important;
+  box-shadow: 0 4px 16px var(--shadow-dark);
+  font-weight: 600;
+  border: 2px solid var(--accent-beige);
 }
 
+.calendar_day_special:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: 0 12px 32px var(--shadow-dark);
+}
+
+/* Months navigation */
 .months {
   text-align: center;
   width: 100%;
-  overflow: hidden;
-  color: red;
+  padding: 24px 0;
+  background: linear-gradient(145deg, var(--primary-beige), white);
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: inset 0 2px 8px var(--shadow-light);
 }
 
 .month {
-  color: red;
+  color: var(--text-accent);
   cursor: pointer;
   display: inline-block;
-  margin: 15px;
-  text-decoration: underline;
+  margin: 8px 12px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  border: 2px solid transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.month:hover {
+  color: white;
+  background: linear-gradient(145deg, var(--hover-color), var(--dark-beige));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--shadow-medium);
+  border-color: var(--accent-beige);
+}
+
+.month:active {
+  transform: translateY(0);
+}
+
+/* Sunday specific styling */
+.calendar_day.sunday {
+  color: var(--sunday-color);
+  font-weight: 600;
+  border: 2px solid var(--sunday-color);
+}
+
+.calendar_day.sunday:hover {
+  background: linear-gradient(145deg, var(--sunday-color), #a0392a);
+  color: white;
+  border-color: white;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .calendar {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 16px;
+  }
+
+  .calendar_day,
+  .calendar_day_header {
+    width: calc(14.28% - 4px);
+    margin: 2px;
+    padding: 8px 4px;
+    font-size: 0.9rem;
+  }
+
+  .month {
+    margin: 6px 8px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  body {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar_day,
+  .calendar_day_header {
+    width: calc(14.28% - 2px);
+    margin: 1px;
+    padding: 6px 2px;
+    font-size: 0.8rem;
+    min-height: 36px;
+  }
+
+  .calendar_day_header {
+    min-height: 32px;
+  }
+}
+
+/* Focus states for accessibility */
+.calendar_day:focus,
+.month:focus,
+a:focus {
+  outline: 3px solid var(--text-accent);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+  }
+
+  .calendar {
+    box-shadow: none;
+    border: 1px solid var(--text-secondary);
+  }
+
+  .calendar_day:hover,
+  .month:hover,
+  a:hover {
+    transform: none;
+    box-shadow: none;
+  }
 }
